@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: linear-gradient(to right, #4a6abb, #f6f1f2, #fcb045);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div{
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+form{
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #4a6abb;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="file"]{
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+form input:focus{
+    border-color: #00c6ff;
+}
+
+form button{
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(to right, #00c6ff, #fcb045);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+form button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+form label{
+    padding-top: 20px;
+}
+.retour{
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 10;
+    color: #fff;
+    padding: 2px 17px;
+    background-color:transparent;
+    border: 2px solid #fff;
+    border-radius: 16px;
+    font-size: 32px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}

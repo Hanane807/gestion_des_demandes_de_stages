@@ -1,103 +1,112 @@
-📌 Présentation du projet
-Ce projet est une application web permettant de gérer les demandes de stage pour un établissement. Il offre deux interfaces :
 
--Une interface étudiant pour soumettre une demande de stage.
+# 🎓 Gestion des Demandes de Stage
 
--Une interface administrateur pour consulter, valider ou refuser les demandes.
+Ce projet est une **application web complète** permettant à un établissement de **gérer les demandes de stage**. Il comprend deux interfaces :  
+- 👨‍🎓 Une interface **étudiant** pour soumettre et suivre les demandes  
+- 👩‍💼 Une interface **administrateur** pour gérer et suivre toutes les demandes  
 
+---
 
-🛠️ Technologies utilisées
--Front-end : HTML5, CSS3, JavaScript, Boxicons, Bootstrap
+## 🛠️ Technologies utilisées
 
--Back-end : PHP 7+
+| Côté | Outils |
+|------|--------|
+| Front-end | `HTML5`, `CSS3`, `JavaScript`, `Bootstrap`, `Boxicons` |
+| Back-end | `PHP 7+` |
+| Base de données | `MySQL` via `WAMPServer` |
+| IDE recommandé | `Visual Studio Code` |
 
--Base de données : MySQL (via WAMPServer)
+---
 
--IDE recommandé : Visual Studio Code
+## ✨ Fonctionnalités
 
-🧪 Fonctionnalités
-👨‍🎓 Étudiants :
-Créer un compte
+### 👨‍🎓 Côté Étudiant :
+- Création de compte
+- Connexion à l’espace personnel
+- Soumission de demande de stage (CV + lettre de motivation)
+- Suppression d’une demande
+- Ajout de plusieurs demandes
+- Modification du mot de passe
 
--Se connecter à leur espace personnel
+### 👩‍💼 Côté Administrateur :
+- Connexion sécurisée
+- Consultation des demandes
+- Validation ou refus des demandes
+- Statistiques visuelles (graphiques)
+- Recherche par nom d’étudiant
+- Modification du mot de passe
 
--Soumettre une demande de stage (avec CV + lettre de motivation)
+---
 
--Supprimer une demande
+## ⚙️ Installation du projet
 
--Ajouter plusieurs demandes
+1. **Cloner le dépôt Git :**
 
--Modifier leur mot de passe
+   ```bash
+   git clone https://github.com/Nadia497/gestion_des_demandes_de_stages.git
+   ```
 
-👩‍💼 Administrateurs :
--Se connecter à un espace sécurisé
+2. **Lancer WAMPServer** et accéder à [phpMyAdmin](http://localhost/phpmyadmin)
 
--Voir toutes les demandes
+3. **Créer la base de données** `demandes_de_stage` puis importer la structure suivante :
 
--Valider ou refuser une demande
+   ```sql
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       nom_complet VARCHAR(50),
+       email VARCHAR(50),
+       mdp VARCHAR(50),
+       role ENUM('admin', 'étudiant')
+   );
 
--Voir les statistiques (graphiques)
+   CREATE TABLE demandes_stages (
+       id_demande INT AUTO_INCREMENT PRIMARY KEY,
+       id_user INT,
+       filiere VARCHAR(100),
+       niveau VARCHAR(50),
+       date_debut DATE,
+       date_fin DATE,
+       cv VARCHAR(255),
+       lettre_motivation TEXT,
+       statut ENUM('en attente', 'acceptée', 'refusée'),
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
+   );
+   ```
 
--Rechercher par nom
+4. **Ajouter un compte administrateur par défaut** :
 
--Modifier son mot de passe
+   ```sql
+   INSERT INTO users (nom_complet, email, mdp, role)
+   VALUES ('Nadia Azizi', 'nadiaazizi300@gmail.com', 'nadia', 'admin');
+   ```
 
-⚙️ Installation
-1-Cloner le projet :
+5. **Modifier la connexion à la base de données dans `php/connexion.php`** :
 
-git clone https://github.com/ton-utilisateur/gestion_stages.git
+   ```php
+   $bdd = new PDO('mysql:host=localhost;dbname=demandes_de_stage;charset=utf8', 'root', '');
+   ```
 
-2-Démarrer WAMPServer et ouvrir phpMyAdmin
+6. **Lancer l'application dans votre navigateur** :
 
-3-Importer la base de données :
+   ```
+   http://localhost/gestion_des_demandes_de_stage/html/premier_inerface.html
+   ```
 
-Créer une base demandes_de_stage, puis exécuter ce script :
+---
 
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nom_complet VARCHAR(50),
-    email VARCHAR(50),
-    mdp VARCHAR(50),
-    role ENUM('admin', 'étudiant')
-);
+## 🔐 Compte Admin de démonstration
 
-CREATE TABLE demandes_stages (
-    id_demande INT AUTO_INCREMENT PRIMARY KEY,
-    id_user INT,
-    filiere VARCHAR(100),
-    niveau VARCHAR(50),
-    date_debut DATE,
-    date_fin DATE,
-    cv VARCHAR(255),
-    lettre_motivation TEXT,
-    statut ENUM('en attente', 'acceptée', 'refusée'),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_user) REFERENCES users(id) ON DELETE CASCADE
-);
+| Email | Mot de passe |
+|-------|--------------|
+| `nadiaazizi300@gmail.com` | `nadia` |
 
-4-Modifier les identifiants de connexion à la base dans php/connexion.php :
+---
 
-$bdd = new PDO('mysql:host=localhost;dbname=demandes_de_stage;charset=utf8', 'root', '');
+## 👩‍🏫 Encadrement et crédits
 
-5-Ouvrir le projet dans le navigateur :
+- 👩‍💻 **Développeuse** : Nadia Azizi  
+- 🎓 **Encadrante** : Madame **Bakhtaoui Zakia**  
+- 📚 **Projet réalisé dans le cadre d’un stage d’initiation**  
+- 📅 **Année académique** : 2025
 
-http://localhost/gestion_des_demandes_de_stage/html/premier_inerface.html
-
-
-📊 Exemple de compte Admin:
-
-Email : nadiaazizi300@gmail.com
-Mot de passe : nadia
-
-Requête SQL à exécuter dans phpMyAdmin :
-INSERT INTO `users`(`nom_complet`, `email`, `mdp`, `role`) 
-VALUES ('Nadia Azizi','nadiaazizi300@gmail.com','nadia','admin');
-
-📌 Auteurs
--Nom & Prénom : Nadia Azizi
-
--Encadrant : Madame Bakhtaoui Zakia
-
--Projet réalisé dans le cadre de : Stage d'initiation
-
--Année : 2025

@@ -1,0 +1,217 @@
+*{
+    margin: O;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+html, body{
+    display: flex;
+    background-color: rgb(249, 251, 253);
+    margin: 0;
+    height: 100%;
+}
+.sidebar .entete {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+.entete i{
+    font-size: 64px;
+    color: #63a5d3;
+}
+.sidebar{
+    width: 250px;
+    background-color: #18415f;
+    color: white;
+    padding: 20px;
+    height: 100%;
+    position: fixed;
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-size: 16px;
+    margin : 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition:  0.3s;
+}
+
+.sidebar a:hover,.sidebar a:active{
+    background-color: #0ef;
+    color: #081b29;
+}
+.main-content{
+     flex: 1; /* <- Très important : ça prend tout l'espace libre à droite */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    position: absolute;
+    right: 20px;
+}
+
+.para_container{
+    display: none;
+}
+.para_container label,
+.para_container input,
+.para_container button{
+    display: block;
+}
+.para_container .update{
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    width: 700px;
+    margin-left: 150px;
+    margin-top: 20px;
+    padding: 10px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+}
+.update h3{
+    font-size: 28px;
+}
+.update label{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.update input{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 30px;
+}
+.update button{
+    width: 150px;
+    height: 40px;
+    color: #fff;
+    background-color:#18415f ;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.update button:hover{
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+}
+.tab{
+    margin: 20px;
+    width: 95%;
+    border-radius: 10px;
+    border-collapse: collapse;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+}
+.dashboard_container{
+    width: 100%;
+}
+.dashboard_container th{
+    background-color: #18415f;
+    color: #fff;
+}
+.dashboard_container .en_tete{
+    display: flex;
+    justify-content: space-between;
+}
+.en_tete button{
+    right: 0;
+    width: 40px;
+    height: 40px;
+    margin-top: 25px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    margin-left: 10px;
+    background-color: #18415f;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.en_tete button:first-child{
+    background-color: #28a745;
+}
+.en_tete  button:first-child:hover{
+    background-color: #218838;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.en_tete button:last-child{
+    background-color: #dc3545;
+}
+.en_tete  button:last-child:hover{
+    background-color: #c82333;
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+.modal-container{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #333333d3;
+    z-index: -1;
+}
+
+.modal{
+    width: 95%;
+    height: 300px;
+    max-width: 500px;
+    min-width: 300px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    flex: 1;
+}
+
+.close-modal{
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: #ff365e;
+    color: #fff;
+}
+.modal h1{
+    margin-bottom: 10px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+
+.modal p{
+    margin-top: 30px;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    flex: 1;
+}
+
+.col_action{
+    width: 80px;
+    text-align: center;
+}
